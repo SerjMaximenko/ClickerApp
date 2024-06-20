@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Кликер</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="img/mouse.png">
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<body>
+  <main>
+    <h2>Игра кликер</h2>
+    <h1 id ="score">0$</h1>
+    <button id="clickbtn" onclick="clickBtn()">+$</button>
+    <br><input type="button" value="Прокачать на 1 уровень|-100$" onclick="update()">
+    <br><input type="button" value="Прокачать на 2 уровня|-150$" onclick="update1()">
+    <br><input type="button" value="Прокачать на 3 уровня|-250$" onclick="update2()">
+    <br><input type="button" value="Прокачать на 10 уровней|-500$" onclick="update3()">
+    <div class="button-container">
+      <input type="button" value="Авто 1 10с|-100$" onclick="auto()">
+      <input type="button" value="+1" onclick="autoLvlUp()">
+    </div>
+    <br><input type="button" value="Подробнее" onclick="reboot()">
+
+    <div class="container">
+      <button id="timerButton">
+        <span>Запустить Таймер</span>
+        <div id="progressBar"></div>
+      </button>
+    </div>
+  </main>
+</body>
+  <script  src="./script.js"></script>
+</body>
+</html>

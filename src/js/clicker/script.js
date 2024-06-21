@@ -1,76 +1,105 @@
 alert("Правила: копите деньги и прокачиваетесь, в минус можно уходить до -100, далее вы проиграете!")
-var score = 0;
+let score = 1000;
 updating = 1;
-
-
-
 
 function clickBtn() {
   score = score + updating;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
+  document.getElementById("main_btn").innerHTML = score + "$";
 }
 function update() {
   score = score - 100;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
+  document.getElementById("main_btn").innerHTML = score + "$";
   if1();
   updating += 1;
 }
 function update1() {
   score = score - 150;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
+  document.getElementById("main_btn").innerHTML = score + "$";
   if1();
   updating += 2;
 }
 function update2() {
   score = score - 250;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
+  document.getElementById("main_btn").innerHTML = score + "$";
   if1();
   updating += 3;
 }
 function update3() {
   score = score - 500;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
+  document.getElementById("main_btn").innerHTML = score + "$";
   if1();
   updating += 10;
 }
 
+// Кнопка авто 1
+let auto_1_active = false;
 let autoLvl1 = 1
+const button = document.getElementById("btn_auto_1");
+button.addEventListener("click", function() {
+  score = score - 100 * autoLvl1;
+  document.getElementById("main_btn").innerHTML = score + "$";
+  let btn_text = document.getElementById("btn_auto_1_price");
+  btn_text.innerHTML = 100 * (autoLvl1 + 1) + "$";
 
-function auto() {
-  score = score - 100;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
-  setInterval("pulsauto()", 100);
-  if1();
-}
+  const duration = 1000;
+  let progress = 0;
+  if (auto_1_active === false) {
+    auto_1_active = true;
+    setInterval(function () {
+      progress++;
+      let progressBar = document.getElementById("progressBar");
 
-const progressBar = document.getElementById("progressBar");
-let timerDuration = 10; // Таймер на 10 секунд
-let interval;
-
-function pulsauto () {
-  score += autoLvl1;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
-
-  if (interval) {
-    clearInterval(interval);
+      // btn.disabled = true;
+      progressBar.style.width = (progress / duration) * 190 + 'px';
+      if (progress === duration) {
+        score = score + autoLvl1;
+        document.getElementById("main_btn").innerHTML = score + "$";
+        progress = 0;
+      }
+    }, 10);
+  } else {
+    autoLvl1 += 1;
+    let btn_lvl = document.getElementById("btn_auto_1_lvl");
+    btn_lvl.innerHTML = "Lvl " + autoLvl1;
   }
+  if1();
+});
 
-  // Сбросить прогресс бар
-  progressBar.style.width = "0%";
+// Кнопка авто 2
+let auto_2_active = false;
+let autoLvl2 = 1
+const button2 = document.getElementById("btn_auto_2");
+button2.addEventListener("click", function() {
+  score = score - 200 * autoLvl2;
+  document.getElementById("main_btn").innerHTML = score + "$";
+  let btn_text = document.getElementById("btn_auto_2_price");
+  btn_text.innerHTML = 200 * (autoLvl2 + 1) + "$";
 
-  let startTime = Date.now();
-  interval = setInterval(() => {
-    let elapsedTime = (Date.now() - startTime) / 1000;
-    let progressPercentage = Math.min((elapsedTime / timerDuration) * 100, 100);
-    progressBar.style.width = progressPercentage + "%";
+  const duration = 500;
+  let progress = 0;
+  if (auto_2_active === false) {
+    auto_2_active = true;
+    setInterval(function () {
+      progress++;
+      let progressBar = document.getElementById("progressBar2");
+      let btn = document.getElementById("btn_auto_2");
+      // btn.disabled = true;
+      progressBar.style.width = (progress / duration) * 190 + 'px';
+      if (progress === duration) {
+        score = score + autoLvl2;
+        document.getElementById("main_btn").innerHTML = score + "$";
+        progress = 0;
+      }
+    }, 10);
+  } else {
+    autoLvl2 += 1;
+    let btn_lvl = document.getElementById("btn_auto_2_lvl");
+    btn_lvl.innerHTML = "Lvl " + autoLvl2;
+  }
+  if1();
+});
 
-    // Остановить таймер, если прошла вся длительность
-    if (progressPercentage >= 100) {
-      clearInterval(interval);
-      alert("Таймер завершен!");
-    }
-  }, 10000);
-}
+
 function autoLvlUp () {
   score -= 100;
   autoLvl1 += 1;
@@ -85,50 +114,6 @@ function if1 () {
     document.write("Вы проиграли, так-как вы превысили лимит кредита");
   }
 }
-function auto1 () {
-  score += updating;
-  setTimeout("plusauto()", 1000);
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
-}
-function pashalka () {
-  score += 10000;
-  document.getElementsByTagName("h1")[0].firstChild.data = score + "$";
-}
 function reboot () {
   alert("Ваш уровень прокачки " + updating + ". Ваш баланс " + score + " .");
 }
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const timerButton = document.getElementById("timerButton");
-  const progressBar = document.getElementById("progressBar");
-  let timerDuration = 10; // Таймер на 10 секунд
-  let interval;
-
-  timerButton.addEventListener("click", function() {
-    if (interval) {
-      clearInterval(interval);
-    }
-
-    // Сбросить прогресс бар
-    progressBar.style.width = "0%";
-
-    let startTime = Date.now();
-    interval = setInterval(() => {
-      let elapsedTime = (Date.now() - startTime) / 1000;
-      let progressPercentage = Math.min((elapsedTime / timerDuration) * 100, 100);
-      progressBar.style.width = progressPercentage + "%";
-
-      // Остановить таймер, если прошла вся длительность
-      if (progressPercentage >= 100) {
-        clearInterval(interval);
-        alert("Таймер завершен!");
-      }
-    }, 100);
-  });
-});
-
-

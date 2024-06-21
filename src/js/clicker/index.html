@@ -3,32 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Кликер</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="icon" href="img/mouse.png">
+  <link rel="stylesheet" href="styles/style_main.css">
+  <link rel="stylesheet" href="styles/style_button_1.css">
+  <link rel="stylesheet" href="styles/style_round_button.css">
+  <link rel="stylesheet" href="styles/style_button_auto.css">
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <body>
   <main>
-    <h2>Игра кликер</h2>
-    <h1 id ="score">0$</h1>
-    <button id="clickbtn" onclick="clickBtn()">+$</button>
-    <br><input type="button" value="Прокачать на 1 уровень|-100$" onclick="update()">
-    <br><input type="button" value="Прокачать на 2 уровня|-150$" onclick="update1()">
-    <br><input type="button" value="Прокачать на 3 уровня|-250$" onclick="update2()">
-    <br><input type="button" value="Прокачать на 10 уровней|-500$" onclick="update3()">
+    <button id="main_btn" class="btn_round" onclick="clickBtn()">0$</button>
+    <br><input type="button" class="btn_global btn_wide" value="Прокачать на 1 уровень|-100$" onclick="update()">
+    <br><input type="button" class="btn_global btn_wide" value="Прокачать на 2 уровня|-150$" onclick="update1()">
+    <br><input type="button" class="btn_global btn_wide" value="Прокачать на 3 уровня|-250$" onclick="update2()">
+    <br><input type="button" class="btn_global btn_wide" value="Прокачать на 10 уровней|-500$" onclick="update3()">
     <div class="button-container">
-      <input type="button" value="Авто 1 10с|-100$" onclick="auto()">
-      <input type="button" value="+1" onclick="autoLvlUp()">
-    </div>
-    <br><input type="button" value="Подробнее" onclick="reboot()">
-
-    <div class="container">
-      <button id="timerButton">
-        <span>Запустить Таймер</span>
+      <button id="btn_auto_1" class="btn_global btn_wide">
+        <span class="btn_text_description">Авто 1 (10с)</span>
+        <span class="btn_text_level" id="btn_auto_1_lvl">Lvl 1</span>
+        <span class="btn_text_price" id="btn_auto_1_price">100$</span>
         <div id="progressBar"></div>
       </button>
     </div>
+    <div class="button-container">
+      <button id="btn_auto_2" class="btn_global btn_wide">
+        <span class="btn_text_description">Авто 1 (10с)</span>
+        <span class="btn_text_level" id="btn_auto_2_lvl">Lvl 1</span>
+        <span class="btn_text_price" id="btn_auto_2_price">200$</span>
+        <div id="progressBar2"></div>
+      </button>
+    </div>
+
+
+
+    <br><input type="button" class="btn_global btn_wide" value="Подробнее" onclick="reboot()">
+
+<!--    <div class="container">-->
+<!--      <button id="timerButton" class="btn_global btn_wide">-->
+<!--        Запустить Таймер-->
+<!--        <div id="progressBar"></div>-->
+<!--      </button>-->
+<!--    </div>-->
   </main>
 </body>
   <script  src="./script.js"></script>
